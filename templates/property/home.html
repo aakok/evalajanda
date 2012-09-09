@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+  {% if properties %}
+  <table border=1>
+    <tr>
+      <th>Adres</th>
+      <th>Ucret</th>
+      <th>Tip</th>
+      <th>Brut Metrakaresi</th>
+      <th>Net Metrekaresi</th>
+      <th>Oda Sayisi</th>
+      <th>Salon Sayisi</th>
+      <th>Alisilmis Oda Sayisi Format</th>
+      <th>Binadaki Kat Sayisi</th>
+      <th>Bulundugu Kat</th>
+      <th>Otopark Durumu</th>
+    </tr>
+    {% for property in properties %}
+    <tr>
+      <td>{{property.address}}</td>
+      <td>{{property.price}}</td>
+      <td>{{property.type}}</td>
+      <td>{{property.gross_area}}</td>
+      <td>{{property.net_area}}</td>
+      <td>{{property.rooms}}</td>
+      <td>{{property.saloons}}</td>
+      <td>{{property.rooms}}+{{property.saloons}}</td>
+      <td>{{property.floors_in_building}}</td>
+      <td>{{property.floor}}</td>
+      <td>{% if property.auto_park %}Oto Park Var{% else %}Oto Park Yok{% endif %}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+[
+  {
+    "pk": 1, 
+    "model": "property.propertytype", 
+    "fields": {
+      "type": "Apartman Dairesi"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "property.propertytype", 
+    "fields": {
+      "type": "Ust Kat Dublex"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "property.propertytype", 
+    "fields": {
+      "type": "Alt Kat Dublex"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "property.propertytype", 
+    "fields": {
+      "type": "Triplex :)"
+    }
+  }
+]
