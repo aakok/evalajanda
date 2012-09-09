@@ -22,6 +22,9 @@ class Property(models.Model):
     floor = models.PositiveIntegerField()
     auto_park = models.BooleanField()
 
+    vendor_name = models.CharField(max_length=256)
+    vendor_phone = models.CharField(max_length=32)
+
     contributors = models.ManyToManyField(
         'auth.User', related_name='contributionproperty_set')
 
