@@ -19,7 +19,7 @@
     </tr>
     {% for property in properties %}
     <tr>
-      <td>{{property.address}}</td>
+      <td><a href="{% url update-property property.id %}">{{property.address}}</a></td>
       <td>{{property.price}}</td>
       <td>{{property.type}}</td>
       <td>{{property.gross_area}}</td>
