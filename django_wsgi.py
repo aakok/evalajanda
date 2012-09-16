@@ -1,8 +1,5 @@
 import os
 import sys
-import site
-
-site.addsitedir('/srv/envs/evalajanda/lib/python2.7/site-packages/')
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
