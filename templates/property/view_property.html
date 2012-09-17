@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table>
+  <tr>
+    <th>Tur: </th>
+    <td>{{property.type}}</td>
+  </tr>
+
+  <tr>
+    <th>Fiyat: </th>
+    <td>{{property.price}}</td>
+  </tr>
+
+  <tr>
+    <th>Brut Metrekare: </th>
+    <td>{{property.gross_area}}</td>
+  </tr>
+
+  <tr>
+    <th>Net Metrekare: </th>
+    <td>{{property.net_area}}</td>
+  </tr>
+
+  <tr>
+    <th>Adres: </th>
+    <td>{{property.address}}</td>
+  </tr>
+
+  <tr>
+    <th>Oda Sayisi: </th>
+    <td>{{property.rooms}}</td>
+  </tr>
+
+  <tr>
+    <th>Salon Sayisi: </th>
+    <td>{{property.saloons}}</td>
+  </tr>
+
+  <tr>
+    <th>Binadaki Kat Sayisi: </th>
+    <td>{{property.floors_in_building}}</td>
+  </tr>
+
+  <tr>
+    <th>Bulundugu Kat: </th>
+    <td>{{property.floor}}</td>
+  </tr>
+
+  <tr>
+    <th>Oto Park: </th>
+    <td>
+      {% if property.auto_park %}
+      Evet
+      {% else %}
+      Hayir
+      {% endif %}</td>
+  </tr>
+
+  <tr>
+    <th>Satici: </th>
+    <td>{{property.vendor_name}}</td>
+  </tr>
+
+  <tr>
+    <th>Satici Tel: </th>
+    <td>{{property.vendor_phone}}</td>
+  </tr>
+
+</table>
+{% ifequal property.user request.user %}
+<a href="{% url update-property property.id %}">Degistir</a>
+{% endifequal %}
+<hr />
+{% for comment in comments %}
+<p><b>{{comment.user}}</b> diyorki...</p>
+<p><i>{{comment.comment}}</i></p>
+<hr />
+{% endfor %}
+<form action="{% url add-comment property.id %}" method="post">
+{{comment_form}}
+{% csrf_token %}
+<input type="submit" name="kaydet" value="kaydet" />
+</form>
+{% endblock %}
