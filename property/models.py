@@ -30,8 +30,12 @@ class Property(models.Model):
 
     @staticmethod
     def interest_calculation(price, months, monthly_interest):
-        return (price * (monthly_interest / 100.0)) / (
-            1 - (1 / ((1 + (monthly_interest / 100.0)) ** months)))
+        interest = (monthly_interest / 100.0)
+        bmsv = interest * (5.0 / 100.0)
+        kkdf = interest * (15.0 / 100.0)
+        total_interest = interest + bmsv + kkdf
+        return (price * total_interest) / (
+            1 - (1 / ((1 + total_interest) ** months)))
 
     def garanti_1_25_60(self):
         return {

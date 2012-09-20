@@ -1,7 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
-from property.forms import PropertyForm, PropertyCommentForm
+from property.forms import (PropertyForm, PropertyCommentForm,
+                            CompoundInterestForm)
 from property.models import Property, PropertyComment
 
 
@@ -61,3 +62,18 @@ def add_comment(request, property_id):
             comment.property = property
             comment.save()
     return redirect("view-property", property.id)
+
+
+@login_required
+def calculate_compound_interest(request):
+    context = dict(form=CompoundInterestForm())
+    if request.POST:
+        context = dict(form=CompoundInterestForm(request.POST))
+        if context['form'].is_valid():
+            data = context['form'].cleaned_data
+            context['monthly_payment'] = Property.interest_calculation(
+                data['price'], data['months'], data['monthly_interest'])
+            context['months'] = data['months']
+            context['total'] = data['months'] * context['monthly_payment']
+    return render(request, "property/calculate_compound_interest.html",
+                  context)

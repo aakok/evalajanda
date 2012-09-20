@@ -2,6 +2,7 @@
   <ul>
     {% if request.user.is_authenticated %}<li><a href="{% url home %}">Ana Sayfa</a></li>{% endif %}
     {% if request.user.is_authenticated %}<li><a href="{% url add-property %}">Ekleme Yap</a></li>{% endif %}
+    {% if request.user.is_authenticated %}<li><a href="{% url calculate-compound-interest %}">Bilesik Faiz Hesabi</a></li>{% endif %}
     {% if request.user.is_authenticated %}<li><a href="{% url logout %}">Cikis</a></li>{% endif %}
   </ul>
 </div>

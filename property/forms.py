@@ -13,3 +13,9 @@ class PropertyCommentForm(forms.ModelForm):
     class Meta:
         model = PropertyComment
         exclude = ('user', 'property')
+
+
+class CompoundInterestForm(forms.Form):
+    price = forms.FloatField()
+    months = forms.IntegerField()
+    monthly_interest = forms.FloatField()

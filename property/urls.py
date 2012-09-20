@@ -13,4 +13,7 @@ urlpatterns = patterns('',
     url(r'^add/comment/(?P<property_id>\d+)/$',
         'property.views.add_comment',
         name='add-comment'),
+    url(r'^calculate/compound/interest/$',
+        'property.views.calculate_compound_interest',
+        name='calculate-compound-interest'),
 )
